@@ -1,0 +1,7 @@
+## Interface: 20300
+## Title: CombatTracker
+## Title-zhCN: CombatTracker
+## Title-zhTW: CombatTracker
+## Description: CombatTracker aaaa
+CombatTracker.xml
+CombatTracker.lua

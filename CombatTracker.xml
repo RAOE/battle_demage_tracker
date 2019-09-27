@@ -1,0 +1,52 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Button name="CombatTrackerFrame" movable="true" enableMouse="true" parent="UIParent" frameStrata="LOW">
+    <Size x="175" y="50"/>
+    <Anchors>
+      <Anchor point="TOP" realtivePoint="BOTTOM" realtiveTo="Minimap">
+        <Offset x="0" y="-10"/>
+      </Anchor>
+    </Anchors>  
+    <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" title="true">
+      <BackgroundInsets>
+         <AbsInset left="11" right="12" top="12" bottom="11"/>
+      </BackgroundInsets>
+      <TitleSize>
+          <AbsValue val="32"/>
+      </TitleSize>
+      <EdgeSize>
+        <AbsValue val="32"/>
+      </EdgeSize>
+    </Backdrop>
+    <Layers>
+      <Layer level="OVERLAY">
+        <FontString name="$parentText" inherits="GameFontNormalSmall" justifyH="CENTER" setAllPoints="true" 
+           text="CommbatTrackerX"/>
+      </Layer>
+    </Layers>
+      <Scripts>
+        <OnEvent>
+            ChatFrame1:AddMessage("OnEvent触发");
+            CombatTracker_OnEvent(self,event,...);
+            ChatFrame1:AddMessage("OnEvent触发完毕");
+        </OnEvent>
+        <OnClick>
+            CombatTracker_ReportDPS();
+        </OnClick>
+        <OnDragStart>
+            self:StartMoving();
+        </OnDragStart>
+         <OnDragStop>
+            self:StopMovingOrSizing();
+        </OnDragStop>
+        <OnLoad>
+            ChatFrame1:AddMessage("战斗插件加载");
+            self:RegisterEvent("PLAYER_ENTER_COMBAT");
+            self:RegisterEvent("PLAYER_REGEN_ENABLED");
+            self:RegisterEvent("PLAYER_REGEN_DISABLED");
+            self:RegisterForClicks("RightButtonUp");
+            self:RegisterForDrag("LeftButton");
+            ChatFrame1:AddMessage("战斗插件加载完成...");
+        </OnLoad>
+     </Scripts>
+  </Button>
+</Ui>
