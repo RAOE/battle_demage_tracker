@@ -4,7 +4,7 @@ local total_time =0
 local total_damage=0
 local averange_dps= 0 
 ChatFrame1:AddMessage("欢迎使用CombatTracker！！")
-function CombatTracker_OnEvent(frame,event)
+function CombatTracker_OnEvent(frame, event, ...)
     ChatFrame1:AddMessage("ON_EVENT被触发了")
     ChatFrame1:AddMessage(tostring(event))
     if event == "PLAYER_REGEN_ENABLED" then 
@@ -18,7 +18,30 @@ function CombatTracker_OnEvent(frame,event)
         ChatFrame1:AddMessage("im combat ...")
         CombatTrackerFrameText:SetText("战斗状态")
         total_damage = 0 
-        start_time=GetTime() 
+        start_time=GetTime()
+    elseif event == "UNIT_COMBAT" then 
+        local unit,action,modifier,damage,damagetype = ...
+        printMsg(unit)
+        printMsg(action)
+        printMsg(modifier)
+        printMsg(damage)
+        printMsg(damagetype)
+        total_damage=total_damage+damage
+        end_time = GetTime()
+        total_time = end_time - start_time
+        averange_dps =total_damage/total_time
+        CombatTracker_UpdateText()
+    -- elseif event =="UNIT_COMBAT" then 
+    --   if not InCombatLockdown()qqsqsqsq then 
+    --     -- 什么也不做
+    --   else then
+    --      local unit,action,modifier,damage,damagetype = ...
+    --      if unit == "player" and action == "HEAL" then 
+    --       total_damage =total_damage +damage
+    --       end_time =GetTime()
+    --       total_time =end_time -start_time
+    --       averange_dps = total_damage / total_time
+    --       CombatTracker_UpdateText()
     end 
 end
 function CombatTracker_UpdateText()
@@ -35,4 +58,7 @@ function CombatTracker_ReportDPS()
     else 
       ChatFrame1:AddMessage(msg)
     end 
+end 
+function printMsg(msg)
+  ChatFrame1:AddMessage(tostring(msg))
 end 

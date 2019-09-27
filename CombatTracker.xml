@@ -20,7 +20,7 @@
     <Layers>
       <Layer level="OVERLAY">
         <FontString name="$parentText" inherits="GameFontNormalSmall" justifyH="CENTER" setAllPoints="true" 
-           text="CommbatTrackerX"/>
+           text="TrackerX"/>
       </Layer>
     </Layers>
       <Scripts>
@@ -40,7 +40,7 @@
         </OnDragStop>
         <OnLoad>
             ChatFrame1:AddMessage("战斗插件加载");
-            self:RegisterEvent("PLAYER_ENTER_COMBAT");
+            self:RegisterEvent("UNIT_COMBAT");
             self:RegisterEvent("PLAYER_REGEN_ENABLED");
             self:RegisterEvent("PLAYER_REGEN_DISABLED");
             self:RegisterForClicks("RightButtonUp");
