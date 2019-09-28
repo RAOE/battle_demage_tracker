@@ -1,6 +1,6 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Button name="CombatTrackerFrame" movable="true" enableMouse="true" parent="UIParent" frameStrata="LOW">
-    <Size x="175" y="50"/>
+    <Size x="220" y="110"/>
     <Anchors>
       <Anchor point="TOP" realtivePoint="BOTTOM" realtiveTo="Minimap">
         <Offset x="0" y="-10"/>
@@ -20,7 +20,7 @@
     <Layers>
       <Layer level="OVERLAY">
         <FontString name="$parentText" inherits="GameFontNormalSmall" justifyH="CENTER" setAllPoints="true" 
-           text="TrackerX"/>
+           text="伤害统计by九幽"/>
       </Layer>
     </Layers>
       <Scripts>
@@ -33,7 +33,7 @@
             CombatTracker_ReportDPS();
         </OnClick>
         <OnDragStart>
-            self:StartMoving();
+            self:StartMoviwng();
         </OnDragStart>
          <OnDragStop>
             self:StopMovingOrSizing();
