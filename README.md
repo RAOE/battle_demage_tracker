@@ -7,6 +7,8 @@
  Description: CombatTracker lua
  CombatTracker.xml
  CombatTracker.lua
-
 <p>使用方法：将该插件放到游戏的安装路径下</p>
 <p>例如：World of Warcraft/_classic_/Interface/AddOns</p>
+<p>效果展示：</p>
+<img src="/images/img1.png"/>
+<img src="/images/img2.png"/>
