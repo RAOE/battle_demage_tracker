@@ -4,10 +4,12 @@ local total_time =0
 local total_damage=0
 local averange_dps= 0 
 ChatFrame1:AddMessage("欢迎使用TrackerX！！")
+CombatTrackerFrame:SetPoint("TOP",Minimap,"BOTTOM",0,-10)
 function CombatTracker_OnEvent(frame, event, ...)
     if event == "PLAYER_REGEN_ENABLED" then 
         ChatFrame1:AddMessage("离开了战斗....")
         CombatTrackerFrameText:SetText("离开战斗...")
+        CombatTracker_ReportDPS()
         end_time = GetTime()
         total_time = end_time - start_time
         averange_dps =total_damage /total_time
@@ -19,13 +21,14 @@ function CombatTracker_OnEvent(frame, event, ...)
     elseif event == "UNIT_COMBAT" then 
         local unit,action,modifier,damage,damagetype = ...
         if unit == "player" and action ~= "HEAL" then
+          printMsg(damage)
           total_damage=total_damage+damage
           end_time = GetTime()
           total_time = end_time - start_time
           averange_dps =total_damage/total_time
           CombatTracker_UpdateText()
         end 
-    end 
+    end  
 end
 function CombatTracker_UpdateText()
    local status = string.format( "%d秒/ %d总量/ %.2f平均伤害值",total_time,total_damage,averange_dps)
