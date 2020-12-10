@@ -1,4 +1,4 @@
-# Tracker_X
+# WOW_Tracker_X
 一款轻量级的，简单的魔兽世界个人战斗伤害统计插件
  Interface: 20300
  Title: CombatTracker
